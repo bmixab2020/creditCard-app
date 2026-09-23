@@ -1,0 +1,358 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.calculator {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+h1 {
+  text-align: center;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.title-row .title-wrap {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.title-row button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.title-row button:hover {
+  background: #1d4ed8;
+}
+
+.title-row .print-btn {
+  background: #059669;
+}
+
+.title-row .print-btn:hover {
+  background: #047857;
+}
+
+.title-row .clear-btn {
+  background: #b8860b;
+  color: #fff;
+}
+
+.title-row .clear-btn:hover {
+  background: #8b6508;
+}
+
+.title-row .delete-btn {
+  background: #ef4444;
+  color: #fff;
+}
+
+.title-row .delete-btn:hover {
+  background: #dc2626;
+}
+
+.title-wrap {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.pencil-icon {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.sheet-title {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  color: #1f2937;
+  padding: 0.55rem;
+  padding-left: 2.2rem;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+}
+
+.sheet-title:focus {
+  border-color: #2563eb;
+  border-style: solid;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.sheet {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.sheet th,
+.sheet td {
+  border: 1px solid #e5e7eb;
+  padding: 0.4rem;
+  text-align: center;
+}
+
+.sheet th {
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 0.85rem;
+}
+
+th[data-sort] {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+th[data-sort]::after {
+  content: " \2195";
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
+
+th[data-sort].sorted-asc::after {
+  content: " \25B2";
+  color: #2563eb;
+}
+
+th[data-sort].sorted-desc::after {
+  content: " \25BC";
+  color: #2563eb;
+}
+
+th[data-sort]:hover {
+  background: #e5e7eb;
+}
+
+.sheet input {
+  width: 100%;
+  padding: 0.4rem;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+.sheet input.num-input {
+  text-align: right;
+  font-size: 1.05rem;
+}
+
+.sheet th:nth-child(1) {
+  width: 40px;
+}
+
+.sheet th:nth-child(2) {
+  width: 110px;
+}
+
+.sheet th:nth-child(3) {
+  width: 80px;
+}
+
+.sheet th:nth-child(4) {
+  width: 140px;
+}
+
+.sheet th:nth-child(5) {
+  width: 130px;
+}
+
+.sheet th:nth-child(6) {
+  width: 110px;
+}
+
+.sheet th:nth-child(7) {
+  width: 110px;
+}
+
+.sheet th:nth-child(8) {
+  width: 260px;
+}
+
+.sheet th:nth-child(9) {
+  width: 36px;
+}
+
+.sheet input.qty-input {
+  text-align: right;
+}
+
+.sheet input.discount-input {
+  text-align: right;
+}
+
+.sheet td.note-col {
+  vertical-align: top;
+}
+
+.sheet td.note-col textarea {
+  text-align: left;
+  width: 100%;
+  display: block;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  font-family: inherit;
+  font-size: 0.85rem;
+  padding: 0.4rem;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+.sheet td.total-col {
+  text-align: right;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sheet td.date-col input {
+  font-size: 0.85rem;
+}
+
+.sheet input:focus {
+  background: #eff6ff;
+}
+
+.op-select {
+  padding: 0.3rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.remove-btn {
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background: #dc2626;
+}
+
+.sheet tr.total-foot-row td {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.sheet tr.total-foot-row .total-label {
+  text-align: left;
+}
+
+.sheet tr.total-foot-row .sum-val-cell {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.sheet tr.total-foot-row .sum-val-cell strong {
+  font-weight: 700;
+}
+
+.sheet tr.total-foot-row .total-val-cell {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.sheet tr.total-foot-row .total-val-cell strong {
+  font-weight: 700;
+}
+
+.save-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.save-bar select {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.save-bar button {
+  background: #059669;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.save-bar button.io-btn {
+  background: #475569;
+}
+
+.save-bar button.io-btn:hover {
+  background: #334155;
+}
+
+.save-bar button:hover {
+  background: #047857;
+}
+
+.add-row-btn {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.add-row-btn:hover {
+  background: #1d4ed8;
+}

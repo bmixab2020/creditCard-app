@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculate Sheet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="calculator">
+    <h1>Calculate Sheet</h1>
+
+<div class="title-row">
+      <div class="title-wrap">
+        <span class="pencil-icon">&#9998;</span>
+        <input type="text" id="sheetTitle" class="sheet-title" placeholder="Sheet Name">
+      </div>
+      <button id="saveBtn">Save</button>
+      <button class="clear-btn" id="clearBtn">New</button>
+      <button class="delete-btn" id="deleteBtn">Delete</button>
+      <button class="print-btn" id="printBtn">Print (PDF)</button>
+    </div>
+
+    <div class="table-scroll">
+      <table class="sheet">
+        <thead>
+          <tr>
+            <th data-sort="index">#</th>
+            <th>Operation</th>
+            <th data-sort="qty"># of Item</th>
+            <th data-sort="amount">Amount</th>
+            <th data-sort="discount">Discount</th>
+            <th data-sort="total">Total</th>
+            <th data-sort="date">Date</th>
+            <th data-sort="note">Notes</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="rowsBody"></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="1">
+              <button id="addRowBtn" class="add-row-btn" title="Add Row">+</button>
+            </td>
+          </tr>
+          <tr class="total-foot-row">
+            <td class="total-label">&#931;</td>
+            <td></td>
+            <td class="sum-val-cell"><strong id="qtySum">0</strong></td>
+            <td class="sum-val-cell"><strong id="amountSum">0</strong></td>
+            <td class="sum-val-cell"><strong id="discountSum">0</strong></td>
+            <td class="total-val-cell"><strong id="display">0</strong></td>
+            <td colspan="3"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="save-bar">
+      <select id="savedSheets">
+        <option value="">Load a saved sheet...</option>
+      </select>
+      <button class="io-btn" id="exportBtn" title="Export Local storage data">Export</button>
+      <button class="io-btn" id="importBtn" title="Import Local storage data">Import</button>
+      <input type="file" id="importFile" accept=".json,application/json" hidden>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
