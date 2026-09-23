@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculate Sheet</title>
+  <title>Tracking Credit Balance</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main class="calculator">
-    <h1>Calculate Sheet</h1>
+    <h1>Tracking Credit Balance</h1>
 
 <div class="title-row">
       <div class="title-wrap">
@@ -26,12 +26,15 @@
         <thead>
           <tr>
             <th data-sort="index">#</th>
-            <th>Operation</th>
-            <th data-sort="qty"># of Item</th>
-            <th data-sort="amount">Amount</th>
-            <th data-sort="discount">Discount</th>
-            <th data-sort="total">Total</th>
-            <th data-sort="date">Date</th>
+            <th data-sort="card">Credit Card Name</th>
+            <th data-sort="amount">Balance</th>
+            <th data-sort="apr">APR</th>
+            <th data-sort="promo">Pro APR</th>
+            <th data-sort="promoEnd">Pro End Date</th>
+            <th data-sort="balTransPct">Bal Trans %</th>
+            <th data-sort="balTransAmt">Bal Trans Amt</th>
+            <th data-sort="discount">Min Pay Amt</th>
+            <th data-sort="date">Due Date</th>
             <th data-sort="note">Notes</th>
             <th></th>
           </tr>
@@ -46,10 +49,13 @@
           <tr class="total-foot-row">
             <td class="total-label">&#931;</td>
             <td></td>
-            <td class="sum-val-cell"><strong id="qtySum">0</strong></td>
             <td class="sum-val-cell"><strong id="amountSum">0</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="sum-val-cell"><strong id="balTransAmtSum">0</strong></td>
             <td class="sum-val-cell"><strong id="discountSum">0</strong></td>
-            <td class="total-val-cell"><strong id="display">0</strong></td>
             <td colspan="3"></td>
           </tr>
         </tfoot>
@@ -62,6 +68,7 @@
       </select>
       <button class="io-btn" id="exportBtn" title="Export Local storage data">Export</button>
       <button class="io-btn" id="importBtn" title="Import Local storage data">Import</button>
+      <button class="io-btn clear-io-btn" id="clearStorageBtn" title="Clear all Local storage data">Clear</button>
       <input type="file" id="importFile" accept=".json,application/json" hidden>
     </div>
   </main>

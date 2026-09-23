@@ -19,7 +19,7 @@ body {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1320px;
 }
 
 h1 {
@@ -183,43 +183,62 @@ th[data-sort]:hover {
 }
 
 .sheet th:nth-child(2) {
-  width: 110px;
-}
-
-.sheet th:nth-child(3) {
-  width: 80px;
-}
-
-.sheet th:nth-child(4) {
-  width: 140px;
-}
-
-.sheet th:nth-child(5) {
   width: 130px;
 }
 
-.sheet th:nth-child(6) {
+.sheet th:nth-child(3) {
   width: 110px;
+}
+
+.sheet th:nth-child(4) {
+  width: 85px;
+}
+
+.sheet th:nth-child(5) {
+  width: 100px;
+}
+
+.sheet th:nth-child(6) {
+  width: 125px;
 }
 
 .sheet th:nth-child(7) {
-  width: 110px;
+  width: 85px;
 }
 
 .sheet th:nth-child(8) {
-  width: 260px;
+  width: 110px;
 }
 
 .sheet th:nth-child(9) {
+  width: 100px;
+}
+
+.sheet th:nth-child(10) {
+  width: 125px;
+}
+
+.sheet th:nth-child(11) {
+  width: 100px;
+}
+
+.sheet th:nth-child(12) {
   width: 36px;
 }
 
-.sheet input.qty-input {
+.sheet input.apr-input,
+.sheet input.promo-input,
+.sheet input.bal-trans-pct-input {
+  text-align: center;
+}
+
+.sheet input.discount-input,
+.sheet input.bal-trans-amt-input {
   text-align: right;
 }
 
-.sheet input.discount-input {
-  text-align: right;
+.sheet input.promo-end-input {
+  font-size: 0.85rem;
 }
 
 .sheet td.note-col {
@@ -241,25 +260,12 @@ th[data-sort]:hover {
   line-height: 1.2;
 }
 
-.sheet td.total-col {
-  text-align: right;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
 .sheet td.date-col input {
   font-size: 0.85rem;
 }
 
 .sheet input:focus {
   background: #eff6ff;
-}
-
-.op-select {
-  padding: 0.3rem;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  font-size: 0.9rem;
 }
 
 .remove-btn {
@@ -296,12 +302,7 @@ th[data-sort]:hover {
   font-weight: 700;
 }
 
-.sheet tr.total-foot-row .total-val-cell {
-  text-align: right;
-  white-space: nowrap;
-}
-
-.sheet tr.total-foot-row .total-val-cell strong {
+.sheet tr.total-foot-row .total-label strong {
   font-weight: 700;
 }
 
@@ -335,6 +336,14 @@ th[data-sort]:hover {
 
 .save-bar button.io-btn:hover {
   background: #334155;
+}
+
+.save-bar button.io-btn.clear-io-btn {
+  background: #ef4444;
+}
+
+.save-bar button.io-btn.clear-io-btn:hover {
+  background: #dc2626;
 }
 
 .save-bar button:hover {
