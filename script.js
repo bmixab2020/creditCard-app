@@ -247,7 +247,7 @@ function createRow(index) {
   btAmtInput.className = "bal-trans-amt-input";
   btAmtInput.value = "0";
   btAmtInput.readOnly = true;
-  btAmtInput.title = "Auto-calculated: Balance x Bal Trans %";
+  btAmtInput.title = "Auto-calculated: Balance x Bal Trans Fee %";
   attachCurrencyFormatting(btAmtInput);
   tdBtAmt.appendChild(btAmtInput);
 
@@ -438,7 +438,7 @@ printBtn.addEventListener("click", () => {
   const doc = new jspdf.jsPDF();
   const LEFT = 20;
   const RIGHT = 192;
-  const COLS = [20, 60, 78, 92, 108, 126, 138, 156, 174, 192];
+  const COLS = [20, 60, 78, 92, 106, 122, 138, 156, 174, 192];
 
   const drawVerticals = (xs, fromY, toY) => {
     xs.forEach((x) => doc.line(x, fromY, x, toY));
@@ -452,9 +452,9 @@ printBtn.addEventListener("click", () => {
     doc.text("Credit Card", 40, y, { align: "center" });
     doc.text("Balance", 69, y, { align: "center" });
     doc.text("APR", 85, y, { align: "center" });
-    doc.text("Pro", 100, y, { align: "center" });
-    doc.text("Pro End", 117, y, { align: "center" });
-    doc.text("BT %", 132, y, { align: "center" });
+    doc.text("Pro", 99, y, { align: "center" });
+    doc.text("Pro End", 114, y, { align: "center" });
+    doc.text("BT Fee %", 130, y, { align: "center" });
     doc.text("BT Amt", 147, y, { align: "center" });
     doc.text("Min Pay", 165, y, { align: "center" });
     doc.text("Due Date", 183, y, { align: "center" });
@@ -477,8 +477,8 @@ printBtn.addEventListener("click", () => {
     doc.text(row.card || "-", 22, y);
     doc.text(formatCurrency(row.amount), 76, y, { align: "right" });
     doc.text(fmtPct(row.apr), 90, y, { align: "right" });
-    doc.text(fmtPct(row.promo), 106, y, { align: "right" });
-    doc.text(formatDate(row.promoEnd), 124, y, { align: "right" });
+    doc.text(fmtPct(row.promo), 104, y, { align: "right" });
+    doc.text(formatDate(row.promoEnd), 120, y, { align: "right" });
     doc.text(fmtPct(row.btPct), 136, y, { align: "right" });
     doc.text(formatCurrency(row.btAmt), 154, y, { align: "right" });
     doc.text(formatCurrency(row.discount), 172, y, { align: "right" });
@@ -617,6 +617,13 @@ importBtn.addEventListener("click", () => {
 importFile.addEventListener("change", () => {
   const file = importFile.files[0];
   if (!file) {
+    return;
+  }
+  if (!/^TrackCreditCardBal_[0-9]{12}\.json$/.test(file.name)) {
+    alert(
+      "Incorrect file. Please choose a file exported from Credit Card Tracking (TrackCreditCardBal_...)."
+    );
+    importFile.value = "";
     return;
   }
   const reader = new FileReader();
