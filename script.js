@@ -666,7 +666,7 @@ clearStorageBtn.addEventListener("click", () => {
     return;
   }
   const ok = confirm(
-    "Clear all saved sheets from local storage? This cannot be undone."
+    "Clearing Credit Card Tracking. Clear all saved sheets from local storage? This cannot be undone."
   );
   if (!ok) {
     return;
