@@ -11,7 +11,7 @@ const importBtn = document.getElementById("importBtn");
 const importFile = document.getElementById("importFile");
 const clearStorageBtn = document.getElementById("clearStorageBtn");
 
-const STORAGE_KEY = "expenseSheets";
+const STORAGE_KEY = "creditCardSheets";
 
 const ROW_COUNT = 5;
 
