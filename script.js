@@ -438,7 +438,7 @@ printBtn.addEventListener("click", () => {
   const doc = new jspdf.jsPDF();
   const LEFT = 20;
   const RIGHT = 192;
-  const COLS = [20, 60, 78, 92, 106, 122, 138, 156, 174, 192];
+  const COLS = [20, 50, 68, 82, 96, 116, 138, 156, 174, 192];
 
   const drawVerticals = (xs, fromY, toY) => {
     xs.forEach((x) => doc.line(x, fromY, x, toY));
@@ -449,12 +449,12 @@ printBtn.addEventListener("click", () => {
   const drawHeader = (y) => {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(10);
-    doc.text("Credit Card", 40, y, { align: "center" });
-    doc.text("Balance", 69, y, { align: "center" });
-    doc.text("APR", 85, y, { align: "center" });
-    doc.text("Pro", 99, y, { align: "center" });
-    doc.text("Pro End", 114, y, { align: "center" });
-    doc.text("BT Fee %", 130, y, { align: "center" });
+    doc.text("Credit Card", 35, y, { align: "center" });
+    doc.text("Balance", 59, y, { align: "center" });
+    doc.text("APR", 75, y, { align: "center" });
+    doc.text("Pro", 89, y, { align: "center" });
+    doc.text("Pro End", 106, y, { align: "center" });
+    doc.text("BT Fee %", 127, y, { align: "center" });
     doc.text("BT Amt", 147, y, { align: "center" });
     doc.text("Min Pay", 165, y, { align: "center" });
     doc.text("Due Date", 183, y, { align: "center" });
@@ -475,14 +475,14 @@ printBtn.addEventListener("click", () => {
 
   const drawRow = (row, y) => {
     doc.text(row.card || "-", 22, y);
-    doc.text(formatCurrency(row.amount), 76, y, { align: "right" });
-    doc.text(fmtPct(row.apr), 90, y, { align: "right" });
-    doc.text(fmtPct(row.promo), 104, y, { align: "right" });
-    doc.text(formatDate(row.promoEnd), 120, y, { align: "right" });
-    doc.text(fmtPct(row.btPct), 136, y, { align: "right" });
+    doc.text(formatCurrency(row.amount), 66, y, { align: "right" });
+    doc.text(fmtPct(row.apr), 75, y, { align: "center" });
+    doc.text(fmtPct(row.promo), 89, y, { align: "center" });
+    doc.text(formatDate(row.promoEnd), 106, y, { align: "center" });
+    doc.text(fmtPct(row.btPct), 127, y, { align: "center" });
     doc.text(formatCurrency(row.btAmt), 154, y, { align: "right" });
     doc.text(formatCurrency(row.discount), 172, y, { align: "right" });
-    doc.text(formatDate(row.date), 190, y, { align: "right" });
+    doc.text(formatDate(row.date), 183, y, { align: "center" });
   };
 
   data.forEach((row) => {
@@ -516,9 +516,9 @@ printBtn.addEventListener("click", () => {
   doc.line(LEFT, totalY - 4, RIGHT, totalY - 4);
   drawVerticals(COLS, rowTop, totalY - 4);
   doc.setFont("symbol", "normal");
-  doc.text("S", 40, totalY, { align: "center" });
+  doc.text("S", 35, totalY, { align: "center" });
   doc.setFont("helvetica", "bold");
-  doc.text(formatCurrency(amountSum), 76, totalY, { align: "right" });
+  doc.text(formatCurrency(amountSum), 66, totalY, { align: "right" });
   doc.text(formatCurrency(btAmtSum), 154, totalY, { align: "right" });
   doc.text(formatCurrency(discountSum), 172, totalY, { align: "right" });
   doc.line(LEFT, totalY + 2, RIGHT, totalY + 2);
