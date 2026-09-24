@@ -662,7 +662,7 @@ importFile.addEventListener("change", () => {
 clearStorageBtn.addEventListener("click", () => {
   const sheets = getSavedSheets();
   if (sheets.length === 0) {
-    alert("No saved data to clear.");
+    alert("No saved data to clear in Credit Card Tracking.");
     return;
   }
   const ok = confirm(
@@ -677,7 +677,7 @@ clearStorageBtn.addEventListener("click", () => {
   resetRows();
   renderTotal();
   updateSavedSheetsList();
-  alert("Local storage cleared.");
+  alert("Credit Card Tracking local storage cleared.");
 });
 
 saveBtn.addEventListener("click", () => {
