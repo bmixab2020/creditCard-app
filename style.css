@@ -421,6 +421,35 @@ th[data-sort]:hover {
   }
 }
 
+/* Give the sheet name its own row on touch devices regardless of width.
+   A max-width query alone misses landscape phones, where the viewport is
+   844px+ but vertical space is tight and the buttons crowd the field. */
+@media (pointer: coarse) {
+  .title-row {
+    flex-wrap: wrap;
+  }
+
+  .title-row .title-wrap {
+    flex: 1 1 100%;
+  }
+
+  .title-row button {
+    flex: 1 1 auto;
+  }
+
+  .save-bar {
+    flex-wrap: wrap;
+  }
+
+  .save-bar select {
+    flex: 1 1 100%;
+  }
+
+  .save-bar button {
+    flex: 1 1 auto;
+  }
+}
+
 @media print {
   body {
     background: #fff;
