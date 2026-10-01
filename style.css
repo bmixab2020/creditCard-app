@@ -7,9 +7,7 @@
 body {
   font-family: system-ui, sans-serif;
   background: #f0f2f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   min-height: 100vh;
 }
 
@@ -20,6 +18,7 @@ body {
   padding: 2rem;
   width: 100%;
   max-width: 1320px;
+  margin: 0 auto;
 }
 
 h1 {
@@ -116,11 +115,13 @@ h1 {
 
 .table-scroll {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin-bottom: 1rem;
 }
 
 .sheet {
   width: 100%;
+  min-width: 1191px;
   table-layout: fixed;
   border-collapse: collapse;
   margin-bottom: 1rem;
@@ -364,4 +365,83 @@ th[data-sort]:hover {
 
 .add-row-btn:hover {
   background: #1d4ed8;
+}
+
+@media (max-width: 768px) {
+  .calculator {
+    padding: 1rem;
+    border-radius: 0;
+  }
+
+  .title-row {
+    flex-wrap: wrap;
+  }
+
+  .title-row .title-wrap {
+    flex: 1 1 100%;
+  }
+
+  .title-row button {
+    flex: 1 1 auto;
+  }
+
+  .save-bar {
+    flex-wrap: wrap;
+  }
+
+  .save-bar select {
+    flex: 1 1 100%;
+  }
+
+  .save-bar button {
+    flex: 1 1 auto;
+  }
+
+  .sheet input,
+  .op-select,
+  .sheet td.note-col textarea,
+  .sheet td.date-col input,
+  .sheet input.promo-end-input,
+  .sheet th {
+    font-size: 16px;
+  }
+}
+
+/* iOS Safari zooms the viewport when focusing any input under 16px. Width alone
+   misses wide touch screens, and (pointer: coarse) alone misses touch devices
+   paired with a mouse, so both conditions apply the bump. */
+@media (pointer: coarse) {
+  .sheet input,
+  .op-select,
+  .sheet td.note-col textarea,
+  .sheet td.date-col input,
+  .sheet input.promo-end-input,
+  .sheet th {
+    font-size: 16px;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .calculator {
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .table-scroll {
+    overflow: visible;
+  }
+
+  .sheet {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .title-row,
+  .save-bar {
+    display: none;
+  }
 }
