@@ -326,6 +326,11 @@ th[data-sort]:hover {
 
 .save-bar select {
   flex: 1;
+  /* A flex item defaults to min-width:auto, so a long sheet name would stop
+     the select from shrinking and push it off the screen. */
+  min-width: 0;
+  max-width: 100%;
+  text-overflow: ellipsis;
   padding: 0.5rem;
   border: 1px solid #d1d5db;
   border-radius: 6px;
