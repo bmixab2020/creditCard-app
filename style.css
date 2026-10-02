@@ -272,11 +272,11 @@ th[data-sort]:hover {
 /* Balance-transfer amount is auto-calculated and read-only. Shade it so it
    reads as display-only, and keep the shading even when it takes focus. */
 .sheet input[readonly]:focus {
-  background: #f3f4f6;
+  background: #f9fafb;
 }
 
 .sheet input[readonly] {
-  background: #f3f4f6;
+  background: #f9fafb;
   cursor: default;
 }
 
